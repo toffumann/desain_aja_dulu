@@ -12,11 +12,12 @@ const AuthFinder = withAuthFinder(() => hash.use('scrypt'), {
 })
 
 export default class Klien extends compose (BaseModel,AuthFinder) {
+  static $fillable: string[] = ['nama', 'telepon', 'email', 'password']
   @column({ isPrimary: true })
   declare id: number
 
   @column()
-  declare nama: string
+  declare nama: string | null
 
   @column()
   declare email: string
@@ -25,7 +26,7 @@ export default class Klien extends compose (BaseModel,AuthFinder) {
   declare password: string
 
   @column()
-  declare telepon: number | null
+  declare telepon: string | null
 
   @hasMany(() => Proyek, {foreignKey: 'id_klien'})
   declare proyeks: HasMany <typeof Proyek>

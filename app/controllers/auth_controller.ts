@@ -1,6 +1,6 @@
 // import type { HttpContext } from '@adonisjs/core/http'
-import  from '#models/user'
-import 
+// import Klien from '#models/klien'
 
-export default class AuthController {
-}
+
+// export default class AuthController {
+// }

@@ -6,8 +6,8 @@ export default class extends BaseSchema {
   async up() {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id').primary()
-      table.integer('id_klien').unsigned().references('id').inTable('klien').onDelete('CASCADE').notNullable()
-      table.integer('id_layanan').unsigned().references('id').inTable('layanan').notNullable()
+      table.integer('id_klien').unsigned().references('id').inTable('kliens').onDelete('CASCADE').notNullable()
+      table.integer('id_layanan').unsigned().references('id').inTable('layanans').notNullable()
       table.text('catatan_klien').nullable()
       table.enum('status_proyek', ['Baru', 'Proses', 'Revisi', 'Selesai', 'Batal']).defaultTo('Baru').notNullable()
       table.date('tanggal_mulai').notNullable()

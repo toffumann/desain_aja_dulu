@@ -1,15 +1,17 @@
 import Klien from '#models/klien'
-import type { HttpContext } from '@adonisjs/core/http'
+import type { HttpContext } from '@adonisjs/http-server'
+import hash from '@adonisjs/core/services/hash'
 
 export default class KliensController {
-  async index() {
+  async index({}: HttpContext) {
     const kliens = await Klien.all()
     return kliens
   }
 
   async store({ request, response }: HttpContext) {
     const data = request.only(['nama','email','password', 'telepon'])
-    const klien = await Klien.create(data)
+    const hashpass = await hash.make(data.password)
+    const klien = await Klien.create({...data, password: hashpass})
     return response.created(klien)
   }
 

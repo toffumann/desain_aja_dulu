@@ -19,13 +19,13 @@ export default class extends BaseSchema {
         .unsigned()
         .references('id')
         .inTable('kliens')
-        .onDelete('CASCAADE')
+        .onDelete('CASCADE')
         .notNullable()
 
       table.string('order_id',100).notNullable().unique()
       table.decimal('jumlah', 10,2).notNullable()
       table.string('metode_pembayaran', 50).notNullable().defaultTo('DANA')
-      table.enum('status', ['TERTUNDA', 'DIBAYAR', 'GAGAL']).defaultTo('PENDING').notNullable()
+      table.enum('status', ['TERTUNDA', 'DIBAYAR', 'GAGAL']).defaultTo('TERTUNDA ').notNullable()
 
       table.timestamp('created_at')
       table.timestamp('updated_at')

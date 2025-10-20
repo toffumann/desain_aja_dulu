@@ -1,6 +1,6 @@
 import app from '@adonisjs/core/services/app'
 import { HttpContext, ExceptionHandler } from '@adonisjs/core/http'
-import type { StatusPageRange, StatusPageRenderer } from '@adonisjs/core/types/http'
+// import type { StatusPageRange, StatusPageRenderer } from '@adonisjs/core/types/http'
 
 export default class HttpExceptionHandler extends ExceptionHandler {
   /**
@@ -20,10 +20,10 @@ export default class HttpExceptionHandler extends ExceptionHandler {
    * Status pages is a collection of error code range and a callback
    * to return the HTML contents to send as a response.
    */
-  protected statusPages: Record<StatusPageRange, StatusPageRenderer> = {
-    '404': (error, { inertia }) => inertia.render('errors/not_found', { error }),
-    '500..599': (error, { inertia }) => inertia.render('errors/server_error', { error }),
-  }
+  // protected statusPages: Record<StatusPageRange, StatusPageRenderer> = {
+  //   '404': (error, { inertia }) => inertia.render('errors/not_found', { error }),
+  //   '500..599': (error, { inertia }) => inertia.render('errors/server_error', { error }),
+  // }
 
   /**
    * The method is used for handling errors and returning

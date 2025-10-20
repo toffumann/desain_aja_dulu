@@ -1,15 +1,14 @@
-import router from '@adonisjs/core/services/router'
 
-router.get('/', async ({ inertia }) => {
-  return inertia.render('home')
-})
+// start/routes.ts
+import Route from '@adonisjs/core/services/router'
+import KliensController from '#controllers/kliens_controller'
 
-router.get('/login', async ({ inertia }) => {
-  return inertia.render('login')
-})
+Route.get('/kliens', [KliensController, 'index'])
+// 3. Route POST yang kita tuju
+Route.post('/kliens', [KliensController, 'store'])
+// 1. Route Root (Mengarahkan POST ke sini)
+// Route.get('/', async () => {
+//   return { hello: 'Welcome to the Kliens API' }
+// })
 
-router.post('/login', async ({ request, response }) => {
-  const { email, password } = request.only(['email', 'password'])
-  console.log(email, password) // sementara tampilkan di console dulu
-  return response.redirect('/')
-})
+// 2. Route GET yang berhasil

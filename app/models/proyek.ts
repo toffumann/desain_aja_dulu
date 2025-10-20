@@ -1,8 +1,10 @@
 import { DateTime } from 'luxon'
-import { BaseModel, belongsTo, column } from '@adonisjs/lucid/orm'
+import { BaseModel, belongsTo, column, hasMany } from '@adonisjs/lucid/orm'
 import type { BelongsTo } from '@adonisjs/lucid/types/relations'
+import type { HasMany } from '@adonisjs/lucid/types/relations'
 import Klien from './klien.js'
 import Layanan from './layanan.js'
+import Transaksi from './transaksi.js'
 
 export default class Proyek extends BaseModel {
   @column({ isPrimary: true })
@@ -28,6 +30,9 @@ export default class Proyek extends BaseModel {
 
   @belongsTo(() => Layanan, {foreignKey: 'id_layanan'})
   declare layanan: BelongsTo <typeof Layanan>
+
+  @hasMany(() => Transaksi, {foreignKey: 'id_proyek'})
+  declare transaksi: HasMany<typeof Transaksi>
 
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime

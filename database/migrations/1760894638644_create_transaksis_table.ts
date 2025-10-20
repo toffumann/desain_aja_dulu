@@ -25,10 +25,11 @@ export default class extends BaseSchema {
       table.string('order_id',100).notNullable().unique()
       table.decimal('jumlah', 10,2).notNullable()
       table.string('metode_pembayaran', 50).notNullable().defaultTo('DANA')
-      table.enum('status', ['TERTUNDA', 'DIBAYAR', 'GAGAL']).defaultTo('TERTUNDA ').notNullable()
+      table.enum('status', ['TERTUNDA', 'DIBAYAR', 'GAGAL']).defaultTo('TERTUNDA').notNullable()
 
-      table.timestamp('created_at')
-      table.timestamp('updated_at')
+      table.timestamp('created_at').defaultTo(this.now())
+      table.timestamp('updated_at').defaultTo(this.now())
+
     })
   }
 

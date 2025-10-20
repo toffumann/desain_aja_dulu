@@ -12,8 +12,8 @@ export default class extends BaseSchema {
       table.enum('status_proyek', ['Baru', 'Proses', 'Revisi', 'Selesai', 'Batal']).defaultTo('Baru').notNullable()
       table.date('tanggal_mulai').notNullable()
 
-      table.timestamp('created_at')
-      table.timestamp('updated_at')
+      table.timestamp('created_at').defaultTo(this.now())
+      table.timestamp('updated_at').defaultTo(this.now())
     })
   }
 

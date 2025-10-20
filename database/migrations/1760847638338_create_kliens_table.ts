@@ -11,8 +11,8 @@ export default class extends BaseSchema {
       table.string('password',255).notNullable()
       table.string('telepon',20).nullable()
 
-      table.timestamp('created_at')
-      table.timestamp('updated_at')
+      table.timestamp('created_at').defaultTo(this.now())
+      table.timestamp('updated_at').defaultTo(this.now())
     })
   }
 
